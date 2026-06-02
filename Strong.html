@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For My Strongest Baby 🤍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background: linear-gradient(to bottom, #ffdde1 0%, #ee9ca7 50%, #a1c4fd 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        /* Scenic Garden Background Elements */
+        .sky-clouds {
+            position: absolute;
+            top: 10%;
+            width: 100%;
+            height: 100px;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50px;
+            height: 30px;
+            width: 90px;
+            animation: floatClouds 20s linear infinite;
+        }
+        .cloud::before, .cloud::after {
+            content: '';
+            position: absolute;
+            background: rgba(255, 255, 255, 0.4);
+            border-radius: 50%;
+        }
+        .cloud::before { width: 45px; height: 45px; top: -20px; left: 15px; }
+        .cloud::after { width: 35px; height: 35px; top: -15px; left: 45px; }
+        
+        @keyframes floatClouds {
+            0% { left: -100px; }
+            100% { left: 100%; }
+        }
+
+        /* Garden Ground and Flowers */
+        .garden-floor {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 25vh;
+            background: linear-gradient(to bottom, #93e9be 0%, #58b380 100%);
+            border-top-left-radius: 50% 20px;
+            border-top-right-radius: 50% 20px;
+            z-index: 2;
+            box-shadow: inset 0 10px 20px rgba(0,0,0,0.05);
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 14px;
+            bottom: calc(Math.random * 15vh);
+            animation: gentleSway 4s ease-in-out infinite alternate;
+            z-index: 3;
+        }
+        
+        @keyframes gentleSway {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+
+        /* The Boy Art */
+        .boy-container {
+            position: absolute;
+            bottom: 12vh;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 4;
+            pointer-events: none;
+        }
+        .boy-emoji {
+            font-size: 65px;
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+            animation: breathing 3s ease-in-out infinite;
+        }
+        .letter-emoji {
+            font-size: 32px;
+            margin-top: -25px;
+            margin-left: 25px;
+            animation: offerLetter 3s ease-in-out infinite;
+        }
+
+        @keyframes breathing {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
+        }
+        @keyframes offerLetter {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(3px, -2px) rotate(5deg); }
+        }
+
+        /* Letter Box / Card Details */
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.82);
+            padding: 30px 22px;
+            border-radius: 28px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 35px rgba(238, 156, 167, 0.25);
+            margin-top: auto;
+            margin-bottom: auto;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+        
+        .letter-tag {
+            background: #ee9ca7;
+            color: white;
+            padding: 4px 12px;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        h1 {
+            color: #3d3d3d;
+            font-size: 19px;
+            font-weight: 700;
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            position: relative;
+            height: 50px;
+        }
+        .btn {
+            height: 50px;
+            padding: 0 24px;
+            font-size: 15px;
+            font-weight: 600;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+        }
+        #yesBtn {
+            background: linear-gradient(45deg, #ee9ca7, #ff477e);
+            color: white;
+            box-shadow: 0 4px 15px rgba(255, 71, 126, 0.3);
+            z-index: 2;
+        }
+        #noBtn {
+            background: #ffffff;
+            color: #777;
+            position: absolute;
+            transition: all 0.2s ease;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        .success-screen {
+            display: none;
+            text-align: center;
+            z-index: 15;
+            background: rgba(255, 255, 255, 0.92);
+            padding: 35px 24px;
+            border-radius: 28px;
+            max-width: 350px;
+            width: 100%;
+            margin-top: auto;
+            margin-bottom: auto;
+            box-shadow: 0 10px 35px rgba(238, 156, 167, 0.25);
+        }
+        .success-screen h2 { color: #ff477e; font-size: 24px; margin-bottom: 12px; }
+        .success-screen p { color: #4a4a4a; font-size: 15px; line-height: 1.6; }
+    </style>
+</head>
+<body>
+
+    <!-- Sky Scenery -->
+    <div class="sky-clouds">
+        <div class="cloud" style="top: 10px; animation-duration: 25s;"></div>
+        <div class="cloud" style="top: 50px; animation-duration: 18s; animation-delay: -5s;"></div>
+    </div>
+
+    <!-- Main Interactive Letter Box -->
+    <div class="container" id="mainCard">
+        <span class="letter-tag">A Special Note ✉️</span>
+        <h1>I know these period cramps are hurting so much right now, but my baby is the strongest girl ever. Can I take care of you today? 🥺👉🏻👈🏻</h1>
+        <div class="btn-container">
+            <button class="btn" id="yesBtn" onclick="acceptLetter()">Open Letter 🍫</button>
+            <button class="btn" id="noBtn" ontouchstart="moveButton(event)" onclick="moveButton(event)">No, I'm okay</button>
+        </div>
+    </div>
+
+    <!-- Success Screen (The Opened Letter) -->
+    <div class="success-screen" id="successScreen">
+        <div class="icon" style="font-size: 45px; margin-bottom: 10px;">👑🌸</div>
+        <h2>Hehe, my queen! 🥰</h2>
+        <p>A virtual hot water bag, your favorite chocolates, and infinite warm hugs are being sent to you right now! <br><br>Just rest completely, close your eyes, and remember that I am right here with you. You are so strong, and I love you endlessly. 🤍</p>
+    </div>
+
+    <!-- Boy Element holding the letter -->
+    <div class="boy-container">
+        <div class="boy-emoji">👦🏻</div>
+        <div class="letter-emoji">✉️</div>
+    </div>
+
+    <!-- Garden Floor with Flowers on Ground -->
+    <div class="garden-floor" id="gardenFloor"></div>
+
+    <script>
+        // Generate flowers across the garden floor
+        const garden = document.getElementById('gardenFloor');
+        const flowerEmojis = ['🌸', '🌷', '🌹', '🌼', '🌺', '🌱'];
+        
+        for (let i = 0; i < 20; i++) {
+            const flower = document.createElement('div');
+            flower.classList.add('flower');
+            flower.innerText = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+            flower.style.left = Math.random() * 95 + '%';
+            flower.style.top = Math.random() * 65 + 'px';
+            flower.style.animationDelay = Math.random() * 2 + 's';
+            garden.appendChild(flower);
+        }
+
+        function moveButton(e) {
+            e.preventDefault(); 
+            const noBtn = document.getElementById('noBtn');
+            const padding = 60;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+
+        function acceptLetter() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
