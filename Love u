@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sleep Well, My Whole World 🤍💤</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background: linear-gradient(to bottom, #1a2a49 0%, #0c1428 60%, #000 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: #f0f0f0;
+        }
+        
+        /* Night Sky Scenery */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 60vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.1; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .moon {
+            position: absolute;
+            top: 10%;
+            right: 15%;
+            font-size: 30px;
+            filter: drop-shadow(0 0 10px rgba(255, 255, 200, 0.5));
+            z-index: 2;
+        }
+
+        /* Cozy Room Art */
+        .room-base {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 40vh;
+            background: linear-gradient(180deg, #1f1228 0%, #150a1b 100%);
+            border-top: 4px solid #331d42;
+            z-index: 3;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+        }
+
+        /* Boy and Bed Scene */
+        .boy-bed-container {
+            font-size: 80px;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 4px 15px rgba(0,0,0,0.4));
+            position: relative;
+            animation: cozySway 6s ease-in-out infinite;
+        }
+        .letter-icon {
+            font-size: 32px;
+            position: absolute;
+            top: 15px;
+            left: 10px;
+            animation: letterWiggle 3s ease-in-out infinite;
+        }
+        @keyframes cozySway {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-5px) rotate(-1deg); }
+        }
+        @keyframes letterWiggle {
+            0%, 100% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg) scale(1.1); }
+        }
+
+        /* Interactive Card */
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            z-index: 10;
+            background: rgba(20, 35, 60, 0.8);
+            padding: 40px 25px;
+            border-radius: 30px;
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: cardAppear 1s ease-out;
+        }
+        @keyframes cardAppear {
+            0% { opacity: 0; transform: translateY(30px) scale(0.9); }
+            100% { opacity: 1; transform: translateY(0) scale(1); }
+        }
+
+        .icon-header {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .question {
+            color: #d1d9e6;
+            font-size: 19px;
+            font-weight: 500;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #6c5ce7, #a29bfe);
+            color: white;
+            height: 55px;
+            width: 100%;
+            max-width: 250px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 28px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 20px rgba(108, 92, 231, 0.4);
+            letter-spacing: 0.5px;
+        }
+        
+        /* The Long Love Letter Screen */
+        .letter-screen {
+            display: none;
+            text-align: left;
+            z-index: 15;
+            background: rgba(10, 20, 40, 0.95);
+            padding: 45px 30px;
+            border-radius: 30px;
+            max-width: 380px;
+            width: 90%;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.6);
+            border: 1px solid rgba(162, 155, 254, 0.2);
+            overflow-y: auto;
+            max-height: 85vh;
+        }
+        
+        .letter-screen::-webkit-scrollbar { width: 5px; }
+        .letter-screen::-webkit-scrollbar-thumb { background: #6c5ce7; border-radius: 10px; }
+
+        .letter-screen h2 { 
+            color: #a29bfe; 
+            font-size: 26px; 
+            margin-bottom: 25px; 
+            text-align: center;
+        }
+        .letter-screen p { 
+            color: #f0f0f0; 
+            font-size: 16px; 
+            line-height: 1.8; 
+            margin-bottom: 20px; 
+            font-weight: 400;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+        }
+        
+        .ily-reply {
+            text-align: right;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+            font-style: italic;
+            color: #d1d9e6;
+            font-size: 15px;
+        }
+        
+    </style>
+</head>
+<body>
+
+    <!-- Stars Sky -->
+    <div class="stars" id="starContainer"></div>
+    
+    <!-- Moon -->
+    <div class="moon">🌙✨</div>
+
+    <!-- Initial Asking Card -->
+    <div class="container" id="mainCard">
+        <div class="icon-header">😴💙</div>
+        <h1 class="question">Before you sleep, I just want to tell my baby...</h1>
+        <button class="btn" onclick="openLetter()">How much I love you 👉🏻👈🏻</button>
+    </div>
+
+    <!-- The Long Love Letter (Opens after tap) -->
+    <div class="letter-screen" id="letterScreen">
+        <h2>My Whole World 🤍🧸</h2>
+        <p>I wish I could wrap my arms around you right now, pull you so close, and just feel your steady breathing against me. Since I can’t be there physically to kiss your forehead and tuck you in, please close your eyes and imagine this letter is my hug.</p>
+        <p>My love, you make every part of my life so much better just by existing. You are the most beautiful, caring, and strongest girl I have ever known. Even on your hardest days, your strength makes me so unbelievably proud. Looking at you makes me realize that I have everything I have ever wanted right in front of me.</p>
+        <p>I don’t just love you for who you are; I love you for how you make me feel—so safe, so inspired, and so full of happiness. Loving you is the easiest and most important decision I have ever made. I am completely and endlessly yours, now and forever. Sleep peacefully, my precious baby. You are loved more than you could ever imagine. 🤍</p>
+        
+        <!-- Her Reply -->
+        <div class="ily-reply">
+            <span style="font-size: 20px; vertical-align: middle;">👧🏻☁️</span> "I love you too"
+        </div>
+    </div>
+
+    <!-- Room and Bed Art -->
+    <div class="room-base">
+        <div class="boy-bed-container">
+            <span style="position: absolute; top: -10px; font-size: 20px;">✍🏻</span>
+            <span class="letter-icon">✉️</span>
+            👦🏻🛏️
+        </div>
+    </div>
+
+    <script>
+        // Generate twinkling stars
+        const container = document.getElementById('starContainer');
+        for (let i = 0; i < 40; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2 + 1;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.top = Math.random() * 60 + 'vh';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 2 + 1) + 's');
+            container.appendChild(star);
+        }
+
+        function openLetter() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('letterScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
