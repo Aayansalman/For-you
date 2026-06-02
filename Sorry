@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>For Baba 🤍</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background: linear-gradient(180deg, #fff0f5 0%, #ffe4e1 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 24px;
+            overflow: hidden;
+            position: relative;
+        }
+        .balloon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .balloon {
+            position: absolute;
+            bottom: -100px;
+            width: 50px;
+            height: 65px;
+            border-radius: 50% 50% 50% 50% / 40% 40% 60% 60%;
+            opacity: 0.7;
+            animation: floatUp 8s linear infinite;
+        }
+        .balloon::after {
+            content: "";
+            position: absolute;
+            bottom: -12px;
+            left: 24px;
+            width: 2px;
+            height: 15px;
+            background-color: rgba(0, 0, 0, 0.15);
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.7; }
+            100% { transform: translateY(-110vh) translateX(50px) rotate(15deg); opacity: 0; }
+        }
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 360px;
+            z-index: 5;
+            background: rgba(255, 255, 255, 0.6);
+            padding: 30px 20px;
+            border-radius: 24px;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.2);
+        }
+        .icon { font-size: 64px; margin-bottom: 20px; }
+        h1 {
+            color: #333333;
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            gap: 16px;
+            width: 100%;
+            position: relative;
+            height: 50px;
+        }
+        .btn {
+            height: 50px;
+            padding: 0 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 25px;
+            border: none;
+            cursor: pointer;
+        }
+        #yesBtn {
+            background: #ff5c8a;
+            color: white;
+            box-shadow: 0 4px 12px rgba(255, 92, 138, 0.3);
+            z-index: 2;
+        }
+        #noBtn {
+            background: #ffffff;
+            color: #666;
+            position: absolute;
+            transition: all 0.2s ease;
+            z-index: 10;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        .success-screen {
+            display: none;
+            text-align: center;
+            z-index: 5;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 40px 24px;
+            border-radius: 24px;
+            max-width: 360px;
+            width: 100%;
+        }
+        .success-screen h2 { color: #ff5c8a; font-size: 28px; margin-bottom: 12px; }
+        .success-screen p { color: #555; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <div class="balloon-container" id="balloonContainer"></div>
+    <div class="container" id="mainCard">
+        <div class="icon">🥺</div>
+        <h1>I’m sorry baba ily sm ummmmmah 🥺👉🏻👈🏻</h1>
+        <div class="btn-container">
+            <button class="btn" id="yesBtn" onclick="acceptApology()">Forgive? 🤍</button>
+            <button class="btn" id="noBtn" ontouchstart="moveButton(event)" onclick="moveButton(event)">No</button>
+        </div>
+    </div>
+    <div class="success-screen" id="successScreen">
+        <div class="icon">🥰</div>
+        <h2>Yayyy! 🙈</h2>
+        <p>You're the absolute best. Thank you for forgiving me! I promise to make it up to you. 🤍</p>
+    </div>
+    <script>
+        const colors = ['#ffb7b2', '#ffdac1', '#e2f0cb', '#b5ead7', '#ffc6ff', '#e8aeff'];
+        const container = document.getElementById('balloonContainer');
+        for (let i = 0; i < 15; i++) {
+            const balloon = document.createElement('div');
+            balloon.classList.add('balloon');
+            balloon.style.left = Math.random() * 90 + '%';
+            balloon.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            balloon.style.animationDelay = Math.random() * 6 + 's';
+            balloon.style.animationDuration = (Math.random() * 4 + 6) + 's';
+            container.appendChild(balloon);
+        }
+        function moveButton(e) {
+            e.preventDefault(); 
+            const noBtn = document.getElementById('noBtn');
+            const padding = 50;
+            const maxX = window.innerWidth - noBtn.offsetWidth - padding;
+            const maxY = window.innerHeight - noBtn.offsetHeight - padding;
+            const randomX = Math.max(padding, Math.floor(Math.random() * maxX));
+            const randomY = Math.max(padding, Math.floor(Math.random() * maxY));
+            noBtn.style.position = 'fixed';
+            noBtn.style.left = randomX + 'px';
+            noBtn.style.top = randomY + 'px';
+        }
+        function acceptApology() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
