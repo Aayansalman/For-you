@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Come Here, My Baby 🥺🫂</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background: linear-gradient(to bottom, #0f172a 0%, #1e1b4b 50%, #2e1065 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: #f8fafc;
+            padding: 20px;
+        }
+        
+        /* Twinkling Stars */
+        .stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            animation: twinkle var(--duration) ease-in-out infinite alternate;
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.2; transform: scale(0.8); }
+            100% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* Ambient Glowing Clouds */
+        .night-cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.04);
+            backdrop-filter: blur(4px);
+            border-radius: 100px;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        /* Initial Screen Card */
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            z-index: 10;
+            background: rgba(30, 27, 75, 0.75);
+            padding: 40px 24px;
+            border-radius: 32px;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            animation: gentleFloat 4s ease-in-out infinite alternate;
+        }
+        @keyframes gentleFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #a78bfa, #f43f5e);
+            color: white;
+            height: 56px;
+            width: 100%;
+            max-width: 260px;
+            font-size: 17px;
+            font-weight: 700;
+            border-radius: 28px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 24px rgba(244, 63, 94, 0.4);
+            transition: transform 0.2s;
+        }
+        .btn:active { transform: scale(0.96); }
+
+        /* Hug & Paragraph Screen */
+        .hug-screen {
+            display: none;
+            text-align: center;
+            z-index: 15;
+            width: 100%;
+            max-width: 380px;
+            animation: fadeIn 1s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        /* Smiling Moon & Hugging Art Environment */
+        .scenery-wrapper {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .smiling-moon {
+            position: absolute;
+            top: -10px;
+            font-size: 45px;
+            animation: moonGlow 3s ease-in-out infinite alternate;
+            filter: drop-shadow(0 0 12px rgba(254, 240, 138, 0.3));
+        }
+        @keyframes moonGlow {
+            0% { transform: rotate(-5deg) scale(0.95); }
+            100% { transform: rotate(5deg) scale(1.05); }
+        }
+
+        /* Hugging Kids Art */
+        .hugging-kids {
+            position: absolute;
+            bottom: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: -10px;
+        }
+        .kid {
+            font-size: 75px;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.3));
+            position: relative;
+        }
+        .boy {
+            animation: boyHug 2s ease-in-out infinite alternate;
+            z-index: 2;
+        }
+        .girl {
+            animation: girlHug 2s ease-in-out infinite alternate;
+            z-index: 1;
+        }
+        /* Blushing effect cheecks */
+        .girl::after {
+            content: '☺️';
+            position: absolute;
+            left: 0;
+            top: 0;
+            font-size: 75px;
+            opacity: 0.9;
+        }
+        
+        @keyframes boyHug {
+            0% { transform: translateX(-5px) rotate(0deg); }
+            100% { transform: translateX(2px) rotate(4deg); }
+        }
+        @keyframes girlHug {
+            0% { transform: translateX(5px) rotate(0deg); }
+            100% { transform: translateX(-2px) rotate(-4deg); }
+        }
+
+        /* Sparkle Hearts around them */
+        .heart-sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: heartFloat 2.5s infinite ease-out;
+            opacity: 0;
+        }
+        @keyframes heartFloat {
+            0% { transform: translateY(20px) scale(0.5); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-60px) scale(1.2); opacity: 0; }
+        }
+
+        /* Love Paragraph Container */
+        .love-paragraph-card {
+            background: rgba(15, 23, 42, 0.85);
+            padding: 30px 24px;
+            border-radius: 28px;
+            border: 1px solid rgba(167, 139, 250, 0.2);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+            text-align: left;
+            max-height: 50vh;
+            overflow-y: auto;
+        }
+        .love-paragraph-card::-webkit-scrollbar { width: 4px; }
+        .love-paragraph-card::-webkit-scrollbar-thumb { background: #a78bfa; border-radius: 10px; }
+
+        .love-paragraph-card h2 {
+            color: #f43f5e;
+            font-size: 22px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .love-paragraph-card p {
+            font-size: 15.5px;
+            line-height: 1.7;
+            color: #e2e8f0;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Space Background Elements -->
+    <div class="stars" id="starsBase"></div>
+    <div class="night-cloud" style="width: 200px; height: 40px; top: 20%; left: -50px;"></div>
+    <div class="night-cloud" style="width: 150px; height: 35px; top: 65%; right: -30px;"></div>
+
+    <!-- Screen 1: The Initial Request -->
+    <div class="container" id="mainCard">
+        <div style="font-size: 50px; margin-bottom: 20px;">🥺❤️‍🩹</div>
+        <div style="font-size: 19px; margin-bottom: 30px; font-weight: 500; color: #cbd5e1; line-height: 1.5;">
+            My poor baby, I hate seeing you in pain...
+        </div>
+        <button class="btn" onclick="showHugScene()">come to baba🥺🫂🫂</button>
+    </div>
+
+    <!-- Screen 2: The Soft Cozy Hug Space -->
+    <div class="hug-screen" id="hugScreen">
+        
+        <div class="scenery-wrapper">
+            <div class="smiling-moon">🌝✨</div>
+            <div class="hugging-kids">
+                <div class="kid boy">👦🏻</div>
+                <div class="kid girl">👧🏻</div>
+            </div>
+            <!-- Floating Heart Elements -->
+            <div class="heart-sparkle" style="left: 42%; animation-delay: 0s;">💖</div>
+            <div class="heart-sparkle" style="left: 54%; animation-delay: 0.8s;">❤️</div>
+            <div class="heart-sparkle" style="left: 48%; animation-delay: 1.5s;">✨</div>
+        </div>
+
+        <div class="love-paragraph-card">
+            <h2>Got You Safely In My Arms 🫂🤍</h2>
+            <p>Just close your eyes, take a deep breath, and let baba hold you tight. I wish I could magically take all your pain away and bear it myself, but since I can't, I promise to stay right here by your side through every single second of it.</p>
+            <p>I love you so incredibly much, my beautiful girl. You are my absolute whole world, my precious little baby, and the greatest thing that has ever happened to me. Seeing you hurt makes my heart ache, but even right now, I am completely in awe of how strong you are.</p>
+            <p>You never have to go through anything alone because your baba is always right here to comfort you, protect you, and spoil you with infinite warm hugs, cozy kisses, and your favorite treats. Just relax your body, let go of all the stress, and remember that I am holding you safely in my heart forever. I love you endlessly, my queen. 💖💤</p>
+        </div>
+    </div>
+
+    <script>
+        // Draw starry background
+        const starsBox = document.getElementById('starsBase');
+        for (let i = 0; i < 45; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const diameter = Math.random() * 2.5 + 1;
+            star.style.width = diameter + 'px';
+            star.style.height = diameter + 'px';
+            star.style.top = Math.random() * 100 + 'vh';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 2 + 1.5) + 's');
+            starsBox.appendChild(star);
+        }
+
+        function showHugScene() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('hugScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
