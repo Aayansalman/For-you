@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Can I say something? 🥺👉🏻👈🏻</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+        body {
+            background: linear-gradient(to bottom, #a0c4ff 0%, #c1d3fe 40%, #e2eafc 70%, #ffdfd3 100%);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            padding: 24px;
+        }
+        
+        /* Evening Twilight Stars */
+        .evening-stars {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            z-index: 1;
+            pointer-events: none;
+        }
+        .star {
+            position: absolute;
+            background: #fff;
+            border-radius: 50%;
+            opacity: 0.6;
+            animation: softTwinkle var(--duration) ease-in-out infinite alternate;
+        }
+        @keyframes softTwinkle {
+            0% { opacity: 0.2; transform: scale(0.9); }
+            100% { opacity: 0.8; transform: scale(1.1); }
+        }
+
+        /* Gentle Evening Breeze Clouds */
+        .breeze-cloud {
+            position: absolute;
+            background: rgba(255, 255, 255, 0.3);
+            border-radius: 40px;
+            pointer-events: none;
+            z-index: 2;
+            animation: gentleBreeze 25s linear infinite;
+        }
+        @keyframes gentleBreeze {
+            0% { left: -150px; }
+            100% { left: 100%; }
+        }
+
+        /* Initial Question Box */
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 350px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.55);
+            padding: 40px 24px;
+            border-radius: 30px;
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 10px 30px rgba(160, 196, 255, 0.25);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: all 0.5s ease;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #70a1ff, #ff6b81);
+            color: white;
+            height: 56px;
+            width: 100%;
+            max-width: 260px;
+            font-size: 16px;
+            font-weight: 700;
+            border-radius: 28px;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(112, 161, 255, 0.35);
+        }
+        .btn:active { transform: scale(0.97); }
+
+        /* Full-Body Boy and Girl Scenery Art */
+        .scenery-base {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 25vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .couple-wrapper {
+            display: flex;
+            align-items: flex-end;
+            gap: 15px;
+            margin-bottom: -5px;
+        }
+        .character {
+            font-size: 90px;
+            line-height: 1;
+            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.1));
+        }
+        .boy-full {
+            animation: standSwayBoy 4s ease-in-out infinite alternate;
+        }
+        .girl-full {
+            animation: standSwayGirl 4s ease-in-out infinite alternate;
+        }
+        @keyframes standSwayBoy {
+            0% { transform: rotate(-1deg); }
+            100% { transform: rotate(1deg) translateX(2px); }
+        }
+        @keyframes standSwayGirl {
+            0% { transform: rotate(1deg); }
+            100% { transform: rotate(-1deg) translateX(-2px); }
+        }
+
+        /* Love Letter Screen */
+        .paragraph-screen {
+            display: none;
+            text-align: left;
+            z-index: 15;
+            width: 100%;
+            max-width: 370px;
+            background: rgba(255, 255, 255, 0.88);
+            padding: 35px 24px;
+            border-radius: 30px;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            max-height: 65vh;
+            overflow-y: auto;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            animation: slideUp 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes slideUp {
+            0% { opacity: 0; transform: translateY(50px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        .paragraph-screen::-webkit-scrollbar { width: 4px; }
+        .paragraph-screen::-webkit-scrollbar-thumb { background: #70a1ff; border-radius: 10px; }
+
+        .paragraph-screen h2 {
+            color: #4a6fa5;
+            font-size: 22px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: 700;
+        }
+        .paragraph-screen p {
+            color: #3d4a5d;
+            font-size: 15.5px;
+            line-height: 1.75;
+            margin-bottom: 16px;
+        }
+        .heart-divider {
+            text-align: center;
+            color: #ff6b81;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="evening-stars" id="starField"></div>
+    
+    <div class="breeze-cloud" style="width: 180px; height: 35px; top: 15%; animation-duration: 30s;"></div>
+    <div class="breeze-cloud" style="width: 130px; height: 30px; top: 35%; animation-duration: 22s; animation-delay: -7s;"></div>
+
+    <div class="container" id="mainCard">
+        <div style="font-size: 45px; margin-bottom: 20px;">🌆✨</div>
+        <button class="btn" onclick="openEveningLetter()">can I say something 🥺👉🏻👈🏻</button>
+    </div>
+
+    <div class="paragraph-screen" id="paragraphScreen">
+        <h2>To My Absolute Favorite Person 🤍</h2>
+        <p>I just wanted to take a quiet evening moment to tell you how completely mesmerizing you are to me. Sometimes I find myself completely lost just thinking about you—especially your beautiful, soft velvet cheeks that I love to gently touch and kiss so much.</p>
+        <div class="heart-divider">✨🌸✨</div>
+        <p>Your hands are my favorite place in the world; holding them makes all my worries completely vanish, and it feels like everything in life just fits perfectly right into place. I want to hold your hand through every high and every single low that comes our way.</p>
+        <div class="heart-divider">🧸❤️🫂</div>
+        <p>But more than anything, your happiness is my ultimate goal. Your gorgeous smile lights up my entire existence and makes the darkest days beautifully bright. Seeing you truly happy, hearing your sweet laugh, and knowing you feel safe with me is the greatest reward I could ever ask for. You are my home, my queen, and I love you endlessly. 🌅🤍</p>
+    </div>
+
+    <div class="scenery-base">
+        <div class="couple-wrapper">
+            <div class="character boy-full">🧍🏻‍♂️</div>
+            <div class="character girl-full">🧍🏻‍♀️</div>
+        </div>
+    </div>
+
+    <script>
+        // Draw evening stars
+        const starsBox = document.getElementById('starField');
+        for (let i = 0; i < 25; i++) {
+            const star = document.createElement('div');
+            star.classList.add('star');
+            const size = Math.random() * 2 + 1.5;
+            star.style.width = size + 'px';
+            star.style.height = size + 'px';
+            star.style.top = Math.random() * 45 + 'vh';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            starsBox.appendChild(star);
+        }
+
+        function openEveningLetter() {
+            document.getElementById('mainCard').style.display = 'none';
+            document.getElementById('paragraphScreen').style.display = 'block';
+        }
+    </script>
+</body>
+</html>
