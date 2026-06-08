@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Starket Storefront</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-close" onclick="toggleMenu()"><i class="fa-solid fa-xmark"></i></div>
+        <ul class="menu-links">
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">CONTACT US</a></li>
+            <li><a href="#">Print On Demand</a></li>
+        </ul>
+        <div class="menu-contact-info">
+            <p><i class="fa-solid fa-phone"></i> +92 3320954638</p>
+            <p><i class="fa-solid fa-envelope"></i> starketofficial@gmail.com</p>
+        </div>
+        <div class="menu-actions">
+            <button class="btn-signin">Sign in</button>
+            <button class="btn-ghost-dark">CONTACT US</button>
+        </div>
+    </nav>
+
+    <header class="main-header">
+        <div class="header-left">
+            <a href="#"><i class="fa-solid fa-cart-shopping"></i></a>
+            <a href="#"><i class="fa-regular fa-heart"></i></a>
+        </div>
+        <div class="header-logo">S T A R K E T</div>
+        <div class="header-right">
+            <div class="hamburger" onclick="toggleMenu()">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </header>
+
+    <div class="ticker-wrapper">
+        <div class="ticker-content">
+            <span>🎉 20% OFF ON EVERYTHING 🎉</span>
+            <span>🎉 20% OFF ON EVERYTHING 🎉</span>
+            <span>🎉 20% OFF ON EVERYTHING 🎉</span>
+            <span>🎉 20% OFF ON EVERYTHING 🎉</span>
+        </div>
+    </div>
+
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="hero-pattern-icon">
+                <div class="slanted-lines"></div>
+            </div>
+            <h1 class="hero-title-solid">STAR</h1>
+            <h1 class="hero-title-outline">KET</h1>
+            <p class="hero-subtitle">— YOUR SATISFACTION IS OUR MISSION —</p>
+            
+            <div class="hero-buttons">
+                <button class="btn-white">SHOP NOW</button>
+                <button class="btn-ghost">CONTACT US</button>
+            </div>
+        </div>
+    </section>
+
+    <section class="products-section">
+        
+        <div class="product-card">
+            <div class="product-image-slider">
+                <span class="badge-new-arrival">New Arrival !</span>
+                <img src="https://images.unsplash.com/photo-1554568218-0f1715e72254?q=80&w=600" alt="Minecraft Creeper Edition">
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="color-swatches">
+                    <span class="swatch white"></span>
+                    <span class="swatch black"></span>
+                </div>
+                <h3>MINECRAFT CREEPER EDITION</h3>
+                <div class="product-price">
+                    <span class="current-price">1,299.00 Rs.</span>
+                    <span class="old-price">1,600.00 Rs.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="product-card">
+            <div class="product-image-slider">
+                <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?q=80&w=600" alt="Inferno Premium Edition">
+                <div class="slider-dots">
+                    <span class="dot active"></span>
+                    <span class="dot"></span>
+                </div>
+            </div>
+            <div class="product-details">
+                <div class="color-swatches">
+                    <span class="swatch black"></span>
+                    <span class="swatch red"></span>
+                </div>
+                <h3>INFERNO PREMIUM EDITION</h3>
+                <div class="product-price">
+                    <span class="current-price">1,299.00 Rs.</span>
+                    <span class="old-price">1,600.00 Rs.</span>
+                </div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="pod-section">
